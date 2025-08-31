@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Surprise for Risma 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+    }
+    #surpriseBtn {
+      padding: 20px 40px;
+      font-size: 24px;
+      border: none;
+      border-radius: 15px;
+      background: #ff4d88;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    #surpriseBtn:hover {
+      transform: scale(1.1);
+      background: #e60073;
+    }
+    #content {
+      display: none;
+      text-align: center;
+      color: white;
+      z-index: 10;
+    }
+    #content h1 {
+      font-size: 70px;
+      text-shadow: 2px 2px 15px #ff3399;
+    }
+    #content h2 {
+      font-size: 45px;
+      margin-top: -10px;
+    }
+    #content p {
+      font-size: 28px;
+      margin-top: 20px;
+      font-style: italic;
+      text-shadow: 1px 1px 5px #ff0066;
+    }
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      border-radius: 50%;
+      animation: float 10s linear infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0); }
+      100% { transform: translateY(-120vh) rotate(360deg); }
+    }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      animation: fall 5s linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(720deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Tombol surprise -->
+  <button id="surpriseBtn">🎁 Klik untuk kejutan 🎁</button>
+
+  <!-- Konten surprise -->
+  <div id="content">
+    <h1>🎂 Happy Birthday 🎉</h1>
+    <h2>Selamat Ulang Tahun, Risma 🥳</h2>
+    <p>✨ Semoga panjang umur dan sehat selalu yaaa ✨</p>
+  </div>
+
+  <!-- Musik Happy Birthday -->
+  <audio id="music" loop>
+    <source src="SnapTik.Net_7331360198675680517.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const btn = document.getElementById("surpriseBtn");
+    const content = document.getElementById("content");
+    const music = document.getElementById("music");
+
+    btn.addEventListener("click", () => {
+      btn.style.display = "none";
+      content.style.display = "block";
+      music.play();
+
+      // Tambahkan balon
+      for (let i = 0; i < 15; i++) {
+        let balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.style.left = Math.random() * window.innerWidth + "px";
+        balloon.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+        balloon.style.animationDuration = (5 + Math.random() * 5) + "s";
+        document.body.appendChild(balloon);
+      }
+
+      // Tambahkan konfeti
+      for (let i = 0; i < 60; i++) {
+        let confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(confetti);
+      }
+    });
+  </script>
+</body>
+</html>
